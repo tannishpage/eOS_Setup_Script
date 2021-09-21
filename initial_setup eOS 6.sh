@@ -7,25 +7,34 @@ sudo add-apt-repository --yes ppa:papirus/papirus
 sudo add-apt-repository --yes ppa:philip.scott/pantheon-tweaks
 
 sudo apt update
-sudo apt -y install git gcc g++ firefox net-tools vim make vlc nextcloud-desktop flat-remix-gtk papirus-icon-theme terminator texstudio libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6 snapd pantheon-tweaks ffmpeg graphviz lm-sensors dconf-editor python3-pip
+sudo apt -y install git gcc g++ firefox net-tools vim make vlc nextcloud-desktop flat-remix-gtk papirus-icon-theme terminator texstudio libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6 snapd pantheon-tweaks ffmpeg graphviz lm-sensors dconf-editor python3-pip texlive
 
-wget "https://zoom.us/client/latest/zoom_amd64.deb" -O zoom.deb
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+flatpak install flathub com.discordapp.Discord
+flatpak run com.discordapp.Discord
+flatpak install flathub com.slack.Slack
+flatpak run com.slack.Slack
+flatpak install flathub us.zoom.Zoom
+flatpak run us.zoom.Zoom
+
+#wget "https://zoom.us/client/latest/zoom_amd64.deb" -O zoom.deb
 wget "https://atom.io/download/deb" -O atom.deb
-wget "https://discord.com/api/download?platform=linux&format=deb" -O discord.deb
-wget "https://downloads.slack-edge.com/linux_releases/slack-desktop-4.17.0-amd64.deb" -O slack.deb
+#wget "https://discord.com/api/download?platform=linux&format=deb" -O discord.deb
+#wget "https://downloads.slack-edge.com/linux_releases/slack-desktop-4.17.0-amd64.deb" -O slack.deb
 wget "https://repo.anaconda.com/archive/Anaconda3-2021.05-Linux-x86_64.sh" -O anaconda.sh
 
-sudo dpkg -i zoom.deb
+#sudo dpkg -i zoom.deb
 sudo dpkg -i atom.deb
-sudo dpkg -i discord.deb
-sudo dpkg -i slack.deb
+#sudo dpkg -i discord.deb
+#sudo dpkg -i slack.deb
 
 sudo apt -y install -f
 
-sudo dpkg -i zoom.deb
+#sudo dpkg -i zoom.deb
 sudo dpkg -i atom.deb
-sudo dpkg -i discord.deb
-sudo dpkg -i slack.deb
+#sudo dpkg -i discord.deb
+#sudo dpkg -i slack.deb
 
 
 chmod +x anaconda.sh
@@ -36,6 +45,12 @@ chmod +x anaconda.sh
 echo "Adding Terminator to the context menu\n"
 mkdir ~/.local/share/contractor/
 cp ./terminator.contract ~/.local/share/contractor/terminator.contract
+
+# Installing python packages I use regularly
+python3 -m pip install virtualenv
+python3 -m pip install matplotlib
+python3 -m pip install numpy
+python3 -m pip install opencv-python
 
 echo "Checking for updates and updating to latest software"
 sudo apt update
