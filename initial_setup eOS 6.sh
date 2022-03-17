@@ -50,8 +50,9 @@ sudo sed -i 's/^OnlyShowIn.*/OnlyShowIn=Unity;GNOME;Pantheon;/' /etc/xdg/autosta
 #sudo dpkg -i slack.deb
 
 
-chmod +x anaconda.sh
-./anaconda.sh
+#chmod +x anaconda.sh
+# Chmod didn't work too well, rather run it in a new bash shell
+bash ./anaconda.sh
 
 # Adding "Open in terminator into the context menu"
 
